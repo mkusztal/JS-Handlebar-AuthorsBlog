@@ -1,0 +1,2 @@
+# javascript-blog
+Tworzenie bloga
