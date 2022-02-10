@@ -12,7 +12,7 @@ const titleClickHandler = function (event) {
   /* add class 'active' to the clicked link */
   clickedElement.classList.add("active");
   /* remove class 'active' from all articles */
-  const activeArticles = document.querySelectorAll(".titles a.active");
+  const activeArticles = document.querySelectorAll("post");
 
   for (let activeArticle of activeArticles) {
     activeArticle.classList.remove("active");
