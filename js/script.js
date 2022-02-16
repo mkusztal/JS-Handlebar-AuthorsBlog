@@ -29,7 +29,7 @@ const titleClickHandler = function (event) {
 
   /* find the correct article using the selector (value of 'href' attribute) */
   const findArticle = document.querySelector(articleSelector);
-
+  console.log(findArticle);
   /* add class 'active' to the correct article */
   findArticle.classList.add('active');
 };
@@ -41,6 +41,7 @@ const optArticleSelector = '.post',
 function generateTitleLinks() {
   /* remove contents of titleList */
   const titleList = document.querySelector(optTitleListSelector);
+  console.log(titleList);
   titleList.innerHTML = '';
 
   /* for each article */
@@ -50,12 +51,15 @@ function generateTitleLinks() {
   for (let article of articles) {
     /* get the article id */
     const articleId = article.getAttribute('id');
+    console.log(articleId);
 
     /* find the title element */
     const articleTitleElement = article.querySelector(optTitleSelector);
+    console.log(articleTitleElement);
 
     /* get the title from the title element */
     const articleTitle = articleTitleElement.innerHTML;
+    console.log(articleTitle);
 
     /* create HTML of the link */
     const linkHTML =
@@ -64,6 +68,7 @@ function generateTitleLinks() {
       '"><span>' +
       articleTitle +
       '</span></a></li>';
+      console.log(linkHTML);
 
     /* insert link into titleList */
     html += linkHTML;
@@ -72,6 +77,7 @@ function generateTitleLinks() {
   titleList.innerHTML = html;
 
   const links = document.querySelectorAll('.titles a');
+  console.log(links);
 
   for (let link of links) {
     link.addEventListener('click', titleClickHandler);
@@ -81,6 +87,9 @@ function generateTitleLinks() {
 generateTitleLinks();
 
 function generateTags(){
+
+  const optArticleTagsSelector = '.post-tags .list';
+
   /* find all articles */
 
   /* START LOOP: for every article: */
