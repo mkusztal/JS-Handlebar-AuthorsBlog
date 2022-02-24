@@ -206,18 +206,11 @@ function generateAuthors() {
     let html = '';
 
     /* get author from data-author attribute */
-    const articleAuthor = 'data-author';
-    const authorAttribute = article.getAttribute(articleAuthor);
-    console.log(authorAttribute);
-
-    const findAuthorHTML = article.innerHTML;
+    const articleAuthor = article.getAttribute('data-author');
+    console.log(articleAuthor);
 
     const linkAuthorHTML =
-      '<li><a href"#">' +
-      article +
-      '"><span>' +
-      findAuthorHTML +
-      '</span></a></li>';
+      '<li><a href="#"' + author + '"><span>' + '</span></a></li>';
     html += linkAuthorHTML;
 
     author.innerHTML = html;
