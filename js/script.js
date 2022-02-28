@@ -59,6 +59,7 @@ const opts = {
   ArticleTagsSelector: '.post-tags .list',
   TagsListSelector: '.tags.list',
   ArticleAuthorSelector: '.post-author',
+  AuthorsListSelector: '.authors.list',
   CloudClassCount: 5,
   CloudClassPrefix: 'tag-size',
 };
@@ -298,9 +299,11 @@ addClickListenersToTags();
 // GENERATE AUTHORS
 
 function generateAuthors() {
+  let allAuthors = {};
   // find all articles
   const articles = document.querySelectorAll(opts.ArticleSelector);
 
+  // START LOOP: for every article
   for (let article of articles) {
     // find author of article
     const author = article.querySelector(opts.ArticleAuthorSelector);
@@ -318,12 +321,44 @@ function generateAuthors() {
       articleAuthor +
       '</span></a>';
 
-    html = html + ' ' + authorHTML;
+    html = html + '' + authorHTML;
 
+    if (!allAuthors[articleAuthor]) {
+      //add generated code to allTags array
+      allAuthors[articleAuthor] = 1;
+    } else {
+      allAuthors[articleAuthor]++;
+    }
     const authorName = article.querySelector(opts.ArticleAuthorSelector);
     console.log('Author names: ', authorName);
     authorName.innerHTML = html;
+
+    // END LOOP: for every article
   }
+
+  // find list of authors in right column
+  const authorList = document.querySelector(opts.AuthorsListSelector);
+
+  // generate all links html
+  let allAuthorsLinkHTML = '';
+
+  // START LOOP: for each author in allAuthors
+  for (let author in allAuthors) {
+    // generate code of a link
+    allAuthorsLinkHTML +=
+      '<li><a href="#author-' +
+      author +
+      '"><span>' +
+      author +
+      ' (' +
+      allAuthors[author] +
+      ')</span></a></li> ';
+
+    // END LOOP: for each author in allAuthors
+  }
+
+  // add html from allAuthors to authorList
+  authorList.inner = allAuthorsLinkHTML;
 }
 
 generateAuthors();
@@ -342,7 +377,7 @@ function authorClickHandler(event) {
   const author = href.replace('#author-', '');
 
   // remove active selector
-  const activeAuthor = document.querySelectorAll('a.active[href="#author-"]');
+  const activeAuthor = document.querySelectorAll('a.active[href^="#author-"]');
 
   for (let activeClick of activeAuthor) {
     activeClick.classList.remove('active');
