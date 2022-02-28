@@ -57,7 +57,7 @@ const opts = {
   TitleSelector: '.post-title',
   TitleListSelector: '.titles',
   ArticleTagsSelector: '.post-tags .list',
-  TagsListSelector: '.tag.list',
+  TagsListSelector: '.tags.list',
   ArticleAuthorSelector: '.post-author',
   CloudClassCount: 5,
   CloudClassPrefix: 'tag-size',
@@ -304,7 +304,7 @@ function generateAuthors() {
   for (let article of articles) {
     // find author of article
     const author = article.querySelector(opts.ArticleAuthorSelector);
-
+    console.log('Authors: ', author);
     /* make html variable with empty string */
     let html = '';
 
@@ -318,7 +318,7 @@ function generateAuthors() {
       articleAuthor +
       '</span></a>';
 
-    html = html + '' + authorHTML;
+    html = html + ' ' + authorHTML;
 
     const authorName = article.querySelector(opts.ArticleAuthorSelector);
     console.log('Author names: ', authorName);
