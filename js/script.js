@@ -114,38 +114,38 @@ function generateTitleLinks(customSelector = '') {
 
 generateTitleLinks();
 
-// // CalculateTagsParams
-// function calculateTagsParams(tags) {
-//   const params = { min: 9999, max: 0 };
-//   for (let tag in tags) {
-//     params.min = Math.min(tags[tag], params.max);
-//     params.max = Math.max(tags[tag], params.max);
-//   }
+// CalculateTagsParams
+function calculateTagsParams(tags) {
+  const params = { min: 9999, max: 0 };
+  for (let tag in tags) {
+    params.min = Math.min(tags[tag], params.max);
+    params.max = Math.max(tags[tag], params.max);
+  }
 
-//   for (let tag in tags) {
-//     console.log(tag + ' is used ' + tags[tag] + ' times');
-//     if (tags[tag] > params.max) {
-//       params.max = tags[tag];
-//     }
-//   }
+  for (let tag in tags) {
+    console.log(tag + ' is used ' + tags[tag] + ' times');
+    if (tags[tag] > params.max) {
+      params.max = tags[tag];
+    }
+  }
 
-//   for (let tag in tags) {
-//     console.log(tag + ' is used ' + tags[tag] + ' times');
-//     if (tags[tag] < params.min) {
-//       params.min = tags[tag];
-//     }
-//   }
+  for (let tag in tags) {
+    console.log(tag + ' is used ' + tags[tag] + ' times');
+    if (tags[tag] < params.min) {
+      params.min = tags[tag];
+    }
+  }
 
-//   return params;
-// }
+  return params;
+}
 
-// function calculateTagsClass(count, params) {
-//   const normalizedCound = count - params.min;
-//   const normalizedMax = params.max - params.min;
-//   const percentage = normalizedCound / normalizedMax;
-//   const classNumber = Math.floor(percentage * (opts.CloudClassCount - 1) + 1);
-//   return opts.CloudClassPrefix + classNumber;
-// }
+function calculateTagsClass(count, params) {
+  const normalizedCound = count - params.min;
+  const normalizedMax = params.max - params.min;
+  const percentage = normalizedCound / normalizedMax;
+  const classNumber = Math.floor(percentage * (opts.CloudClassCount - 1) + 1);
+  return opts.CloudClassPrefix + classNumber;
+}
 
 // GENERATE TAGS
 function generateTags() {
@@ -154,7 +154,6 @@ function generateTags() {
 
   /* find all articles */
   const findArticles = document.querySelectorAll(opts.ArticleSelector);
-  console.log(findArticles);
 
   /* START LOOP: for every article: */
   for (let article of findArticles) {
@@ -194,8 +193,8 @@ function generateTags() {
 
   //const allTagsData = { tags: [] };
 
-  //const tagsParams = calculateTagsParams(allTags);
-  //console.log('tagParams: ', tagsParams);
+  const tagsParams = calculateTagsParams(allTags);
+  console.log('tagParams: ', tagsParams);
 
   const tagList = document.querySelector(opts.TagsListSelector);
   // create variable for all links HTML code
@@ -214,12 +213,12 @@ function generateTags() {
     allTagsLinkHTML +=
       '<li><a href="#tag-' +
       tag +
-      '"><span>' +
-      tag +
-      '(' +
-      allTags[tag] +
-      ')' +
-      '</span></a></li>';
+      '" class="' +
+      '>' +
+      calculateTagsClass(allTags[tag], tagsParams) +
+      ' ' +
+      '</a></li>';
+
     // END LOOP: for each tag in allTags:
   }
 
@@ -402,8 +401,9 @@ function addClickListenersToAuthors() {
   /* START LOOP: for each link */
   for (let authorLink of authorLinks) {
     authorLink.addEventListener('click', authorClickHandler);
+    /* END LOOP: for each link */
   }
-  /* END LOOP: for each link */
+
   const authorListLinks = document.querySelectorAll('.list.authors a');
 
   for (let authorLink of authorListLinks) {
