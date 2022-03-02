@@ -53,6 +53,7 @@ const titleClickHandler = function (event) {
 };
 
 const opts = {
+  // male litery
   ArticleSelector: '.post',
   TitleSelector: '.post-title',
   TitleListSelector: '.titles',
@@ -144,7 +145,7 @@ function calculateTagsClass(count, params) {
   const normalizedMax = params.max - params.min;
   const percentage = normalizedCound / normalizedMax;
   const classNumber = Math.floor(percentage * (opts.CloudClassCount - 1) + 1);
-  return opts.CloudClassPrefix + classNumber;
+  return opts.CloudClassPrefix + '-' + classNumber;
 }
 
 // GENERATE TAGS

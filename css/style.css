@@ -104,7 +104,7 @@ body {
 }
 
 /* Tags */
-.tags {
+.tags li {
   display: inline;
 }
 
