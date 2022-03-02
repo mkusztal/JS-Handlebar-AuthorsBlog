@@ -193,12 +193,11 @@ function generateTags() {
 
   //const allTagsData = { tags: [] };
 
-  const tagsParams = calculateTagsParams(allTags);
-  console.log('tagParams: ', tagsParams);
-
   const tagList = document.querySelector(opts.TagsListSelector);
   // create variable for all links HTML code
   let allTagsLinkHTML = '';
+
+  const tagsParams = calculateTagsParams(allTags);
 
   // START LOOP: for each tag in allTags
   for (let tag in allTags) {
