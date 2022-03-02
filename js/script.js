@@ -214,8 +214,9 @@ function generateTags() {
       '<li><a href="#tag-' +
       tag +
       '" class="' +
-      '>' +
       calculateTagsClass(allTags[tag], tagsParams) +
+      '">' +
+      tag +
       ' ' +
       '</a></li>';
 
@@ -357,7 +358,7 @@ function generateAuthors() {
   }
 
   // add html from allAuthors to authorList
-  authorList.inner = allAuthorsLinkHTML;
+  authorList.innerHTML = allAuthorsLinkHTML;
 }
 
 generateAuthors();
