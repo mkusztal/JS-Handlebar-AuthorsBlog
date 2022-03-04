@@ -1,13 +1,16 @@
 {
-    "env": {
-      "browser": true,
-      "es6": true
-    },
-    "extends": ["eslint:recommended", "prettier"],
-    "parserOptions": {
-      "ecmaVersion": 2015
-    },
-    "rules": {
-      "no-console": ["off"]
-    }
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": ["eslint:recommended", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": 2015
+  },
+  "rules": {
+    "no-console": ["off"]
+  },
+  "globals": {
+    "Handlebars": false
   }
+}

@@ -281,13 +281,9 @@ function generateAuthors() {
 
     /* get author from data-author attribute */
     const articleAuthor = article.getAttribute('data-author');
-    console.log(articleAuthor);
-    const authorHTML =
-      '<a href="#author-' +
-      articleAuthor +
-      '"><span>' +
-      articleAuthor +
-      '</span></a>';
+
+    const authorHTMLData = { author: articleAuthor };
+    const authorHTML = templates.authorLink(authorHTMLData);
 
     html = html + '' + authorHTML;
 
@@ -307,25 +303,19 @@ function generateAuthors() {
   const authorList = document.querySelector(opts.authorsListSelector);
 
   // generate all links html
-  let allAuthorsLinkHTML = '';
+  const allAuthorsData = { allAuthors: [] };
 
   // START LOOP: for each author in allAuthors
   for (let author in allAuthors) {
     // generate code of a link
-    allAuthorsLinkHTML +=
-      '<li><a href="#author-' +
-      author +
-      '"><span>' +
-      author +
-      ' (' +
-      allAuthors[author] +
-      ')</span></a></li> ';
+    allAuthorsData.allAuthors.push({
+      author: author,
+    });
 
     // END LOOP: for each author in allAuthors
   }
-
   // add html from allAuthors to authorList
-  authorList.innerHTML = allAuthorsLinkHTML;
+  authorList.innerHTML = templates.authorListLink(allAuthorsData);
 }
 
 generateAuthors();
