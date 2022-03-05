@@ -380,20 +380,18 @@
 
     <script id="template-tagcloud-link" type="text/x-handlebars-template">
       {{#each tags}}
-        <li><a
-            href='#tag-{{tag}}'
-            class='{{className}} '
-          >{{tag}}({{count}})</a></li>
+        <li><a href='#tag-{{tag}}' class='{{className}} '>{{tag}}</a></li>
       {{/each}}
     </script>
 
     <script id="template-author-link" type="text/x-handlebars-template">
-      <li><a href='#author-{{author}}'><span>{{author}}</span></a></li>
+      <a href='#author-{{author}}'><span>{{author}}</span></a>
     </script>
 
     <script id="template-authorlist-link" type="text/x-handlebars-template">
       {{#each allAuthors}}
-        <li><a href='#author-{{author}}'>{{author}}</a></li>
+        <li><a href='#author-{{author}}' class='{{className}}'>{{author}}
+            ({{count}})</a></li>
       {{/each}}
     </script>
 

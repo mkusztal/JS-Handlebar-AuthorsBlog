@@ -158,10 +158,10 @@ function generateTags() {
     /* START LOOP: for each tag */
     for (let tag of articleTagsArray) {
       /* generate HTML of the link */
-      const linkTagHTML =
-        '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>';
+      const linkTagHTMLData = { tag: tag };
+      const tagHTML = templates.tagLink(linkTagHTMLData);
       /* add generated code to HTML variable */
-      html += linkTagHTML;
+      html += tagHTML;
       // check if this link is not already in allTags
       if (!allTags[tag]) {
         // add tag to allTags object
@@ -178,6 +178,7 @@ function generateTags() {
     /* END LOOP: for every article: */
   }
 
+  // right column
   const allTagsData = { tags: [] };
 
   const tagList = document.querySelector(opts.tagsListSelector);
@@ -273,9 +274,6 @@ function generateAuthors() {
 
   // START LOOP: for every article
   for (let article of articles) {
-    // find author of article
-    const author = article.querySelector(opts.articleAuthorSelector);
-    console.log('author: ', author);
     /* make html variable with empty string */
     let html = '';
 
