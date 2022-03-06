@@ -132,8 +132,8 @@ function calculateTagsClass(count, params) {
   const normalizedCound = count - params.min;
   const normalizedMax = params.max - params.min;
   const percentage = normalizedCound / normalizedMax;
-  const classNumber = Math.floor(percentage * (opts.CloudClassCount - 1) + 1);
-  return opts.CloudClassPrefix + '-' + classNumber;
+  const classNumber = Math.floor(percentage * (opts.cloudClassCount - 1) + 1);
+  return opts.cloudClassPrefix + '-' + classNumber;
 }
 
 // GENERATE TAGS
@@ -314,6 +314,7 @@ function generateAuthors() {
   }
   // add html from allAuthors to authorList
   authorList.innerHTML = templates.authorListLink(allAuthorsData);
+  console.log('allAuthorsData: ', allAuthorsData);
 }
 
 generateAuthors();
