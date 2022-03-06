@@ -189,7 +189,6 @@ function generateTags() {
     //generate code of a link and add it to allTagsHTML
     allTagsData.tags.push({
       tag: tag,
-      count: allTags[tag],
       className: calculateTagsClass(allTags[tag], tagsParams),
     });
     // END LOOP: for each tag in allTags:
@@ -308,6 +307,7 @@ function generateAuthors() {
     // generate code of a link
     allAuthorsData.allAuthors.push({
       author: author,
+      count: allAuthors[author],
     });
 
     // END LOOP: for each author in allAuthors
