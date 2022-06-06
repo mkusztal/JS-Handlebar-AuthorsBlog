@@ -1,21 +1,11 @@
 'use strict';
 
 const templates = {
-  articleLink: Handlebars.compile(
-    document.querySelector('#template-article-link').innerHTML
-  ),
-  tagLink: Handlebars.compile(
-    document.querySelector('#template-tag-link').innerHTML
-  ),
-  authorLink: Handlebars.compile(
-    document.querySelector('#template-author-link').innerHTML
-  ),
-  authorListLink: Handlebars.compile(
-    document.querySelector('#template-authorlist-link').innerHTML
-  ),
-  tagCloudLink: Handlebars.compile(
-    document.querySelector('#template-tagcloud-link').innerHTML
-  ),
+  articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
+  tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
+  authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML),
+  authorListLink: Handlebars.compile(document.querySelector('#template-authorlist-link').innerHTML),
+  tagCloudLink: Handlebars.compile(document.querySelector('#template-tagcloud-link').innerHTML),
 };
 
 const opts = {
@@ -31,7 +21,6 @@ const opts = {
 };
 
 const titleClickHandler = function (event) {
-  console.log('Link was clicked!');
   event.preventDefault();
   const clickedElement = this;
 
@@ -69,9 +58,7 @@ function generateTitleLinks(customSelector = '') {
   titleList.innerHTML = '';
 
   /* for each article */
-  const articles = document.querySelectorAll(
-    opts.articleSelector + customSelector
-  );
+  const articles = document.querySelectorAll(opts.articleSelector + customSelector);
   let html = '';
 
   for (let article of articles) {
@@ -339,9 +326,7 @@ function authorClickHandler(event) {
     activeClick.classList.remove('active');
   }
 
-  const targetAuthor = document.querySelectorAll(
-    'a[href^="#author-' + href + '"]'
-  );
+  const targetAuthor = document.querySelectorAll('a[href^="#author-' + href + '"]');
 
   for (let click of targetAuthor) {
     click.classList.add('active');
