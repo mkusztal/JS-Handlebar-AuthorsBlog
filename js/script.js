@@ -99,14 +99,12 @@ function calculateTagsParams(tags) {
   }
 
   for (let tag in tags) {
-    console.log(tag + ' is used ' + tags[tag] + ' times');
     if (tags[tag] > params.max) {
       params.max = tags[tag];
     }
   }
 
   for (let tag in tags) {
-    console.log(tag + ' is used ' + tags[tag] + ' times');
     if (tags[tag] < params.min) {
       params.min = tags[tag];
     }
