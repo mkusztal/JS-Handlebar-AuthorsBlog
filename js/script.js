@@ -181,7 +181,6 @@ function generateTags() {
 
   // add HTML from allTagsHTML to tagList
   tagList.innerHTML = templates.tagCloudLink(allTagsData);
-  console.log('allTagsData: ', allTagsData);
 }
 
 generateTags();
