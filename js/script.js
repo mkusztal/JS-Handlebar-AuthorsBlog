@@ -99,14 +99,12 @@ function calculateTagsParams(tags) {
   }
 
   for (let tag in tags) {
-    console.log(tag + ' is used ' + tags[tag] + ' times');
     if (tags[tag] > params.max) {
       params.max = tags[tag];
     }
   }
 
   for (let tag in tags) {
-    console.log(tag + ' is used ' + tags[tag] + ' times');
     if (tags[tag] < params.min) {
       params.min = tags[tag];
     }
@@ -183,7 +181,6 @@ function generateTags() {
 
   // add HTML from allTagsHTML to tagList
   tagList.innerHTML = templates.tagCloudLink(allTagsData);
-  console.log('allTagsData: ', allTagsData);
 }
 
 generateTags();
